@@ -37,50 +37,50 @@ namespace :deploy do
     deploy.restart
   end
 
-  #desc "Restart app"
-  #task :restart do
-  #  unicorn.restart
-  #end
-  #
-  #desc "Start app"
-  #task :start do
-  #  unicorn.read
-  #end
-  #
-  #desc "Stop app"
-  #task :stop do
-  #  unicorn.stop
-  #end
+  desc "Restart app"
+  task :restart do
+    unicorn.restart
+  end
+
+  desc "Start app"
+  task :start do
+    unicorn.read
+  end
+
+  desc "Stop app"
+  task :stop do
+    unicorn.stop
+  end
 end
 
-#namespace :unicorn do
-#  desc "Restart unicorn"
-#  task :restart do
-#    if requires_websrv?
-#      run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{deploy_to}/current && bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D; fi"
-#    end
-#  end
-#  desc "Start unicorn"
-#  task :start do
-#    if requires_websrv?
-#      run "cd #{deploy_to}/current && bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D"
-#    end
-#  end
-#  desc "Stop unicorn"
-#  task :stop do
-#    if requires_websrv?
-#      run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
-#    end
-#  end
-#end
+namespace :unicorn do
+  desc "Restart unicorn"
+  task :restart do
+    if requires_websrv?
+      run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{deploy_to}/current && bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D; fi"
+    end
+  end
+  desc "Start unicorn"
+  task :start do
+    if requires_websrv?
+      run "cd #{deploy_to}/current && bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D"
+    end
+  end
+  desc "Stop unicorn"
+  task :stop do
+    if requires_websrv?
+      run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
+    end
+  end
+end
 
 namespace :logs do
   desc "Showing 'rails_env' log"
   task(:tail) {stream "tail -f #{shared_path}/log/#{rails_env}.log"}
 
-  #namespace(:unicorn) do
-  #  desc "Showing unicorn log"
-  #  task(:tail) {stream "tail -f #{shared_path}/log/unicorn.log"}
-  #end
+  namespace(:unicorn) do
+    desc "Showing unicorn log"
+    task(:tail) {stream "tail -f #{shared_path}/log/unicorn.log"}
+  end
 end
 
