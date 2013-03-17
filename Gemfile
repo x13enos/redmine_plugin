@@ -86,6 +86,10 @@ group :test do
   gem "mocha", "0.12.3"
 end
 
+group :production do
+  gem 'unicorn'
+end
+
 local_gemfile = File.join(File.dirname(__FILE__), "Gemfile.local")
 if File.exists?(local_gemfile)
   puts "Loading Gemfile.local ..." if $DEBUG # `ruby -d` or `bundle -v`
