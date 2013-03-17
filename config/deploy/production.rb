@@ -7,8 +7,8 @@ set :rvm_type, :user
 set :rails_env, "production"
 
 set :use_sudo, false
-#set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
-#set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
+set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
+set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 
 set :domain, "151.236.217.245"
 role :web, domain
@@ -35,7 +35,7 @@ namespace :deploy do
     # run "rvm rvmrc trust #{release_path}"
     #copy config
     run "cp #{release_path}/config/deploy/production/database.yml #{release_path}/config/database.yml"
-    #run "cp #{release_path}/config/deploy/production/unicorn.rb #{release_path}/config/unicorn.rb"
+    run "cp #{release_path}/config/deploy/production/unicorn.rb #{release_path}/config/unicorn.rb"
     #run "cp #{release_path}/config/deploy/demo/app_config.yml #{release_path}/config/app_config.yml"
     #run "cp #{release_path}/config/deploy/demo/loops.yml #{release_path}/config/loops.yml"
     run "cp #{release_path}/config/deploy/production/.rvmrc #{release_path}/.rvmrc"
