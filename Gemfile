@@ -39,17 +39,17 @@ platforms :mri, :mingw do
   end
 end
 
-platforms :mri_18, :mingw_18 do
-  group :mysql do
-    gem "mysql", "~> 2.8.1"
-  end
-end
-
-platforms :mri_19, :mingw_19 do
-  group :mysql do
-    gem "mysql2", "~> 0.3.11"
-  end
-end
+#platforms :mri_18, :mingw_18 do
+#  group :mysql do
+#    gem "mysql", "~> 2.8.1"
+#  end
+#end
+#
+#platforms :mri_19, :mingw_19 do
+#  group :mysql do
+#    gem "mysql2", "~> 0.3.11"
+#  end
+#end
 
 platforms :jruby do
   gem "jruby-openssl"
@@ -70,6 +70,10 @@ end
 group :development do
   gem "rdoc", ">= 2.4.2"
   gem "yard"
+  gem 'capistrano', '2.12.0'
+  gem 'capistrano-ext', '1.2.1'
+  gem 'capistrano_colors', '0.5.5'
+  gem 'rvm-capistrano', '1.2.1'
 end
 
 group :test do
