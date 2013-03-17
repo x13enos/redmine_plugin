@@ -1,0 +1,16 @@
+development: &dev
+  adapter: postgresql
+  encoding: unicode
+  database: redmine_development
+  pool: 10
+  username: redmine
+  password: 0gcHy3eYfFnmYBXwLotXCkMOmXKpJc
+  host: localhost
+
+test:
+  <<: *dev
+  database: redmine_test
+
+production:
+  <<: *dev
+  database: redmine_production
