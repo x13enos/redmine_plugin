@@ -1,0 +1,66 @@
+<h2><%= @query.new_record? ? l(:label_calendar) : h(@query.name) %></h2>
+
+<%= form_tag({:controller => 'calendars', :action => 'show', :project_id => @project},
+             :method => :get, :id => 'query_form') do %>
+    <%= hidden_field_tag 'set_filter', '1' %>
+    <fieldset id="filters" class="collapsible <%= @query.new_record? ? "" : "collapsed" %>">
+      <legend onclick="toggleFieldset(this);"><%= l(:label_filter_plural) %></legend>
+      <div style="<%= @query.new_record? ? "" : "display: none;" %>">
+        <%= render :partial => 'queries/filters', :locals => {:query => @query} %>
+      </div>
+    </fieldset>
+
+    <% if params[:type_period] && params[:type_period] == 'week' %>
+     <p style="float:right;">
+        <%= link_to_previous_week(@day) %> | <%= link_to_next_week(@day) %>
+     </p>
+    <% elsif  (params[:type_period] && params[:type_period] == 'month') || params[:type_period].nil?  %>
+      <p style="float:right;">
+        <%= link_to_previous_month(@year, @month) %> | <%= link_to_next_month(@year, @month) %>
+      </p>
+    <% end %>
+
+    <p class="buttons">
+      <%= hidden_field_tag 'current_day', @day.to_s  %>
+      <% if params[:type_period] && params[:type_period] == 'week' %>
+        <div>
+          <%= label_tag('type_period', l(:type_period)) %>
+          <%= select_tag "type_period", ("<option value='week'>" + l(:type_period_week) + "</option><option value='month'>" + l(:type_period_month) + "</option>").html_safe %>
+        </div>
+        <br>
+      <% elsif (params[:type_period] && params[:type_period] == 'month') || params[:type_period].nil? %>
+        <div>
+          <%= label_tag('type_period', l(:type_period)) %>
+          <%= select_tag "type_period", ("<option value='month'>" + l(:type_period_month) + "</option><option value='week'>" + l(:type_period_week) + "</option>").html_safe %>
+        </div>
+        <br>
+        <%= label_tag('month', l(:label_month)) %>
+        <%= select_month(@month, :prefix => "month", :discard_type => true) %>
+        <%= label_tag('year', l(:label_year)) %>
+        <%= select_year(@year, :prefix => "year", :discard_type => true) %>
+      <% end %>
+      <%= link_to_function l(:button_apply), '$("#query_form").submit()', :class => 'icon icon-checked' %>
+      <%= link_to l(:button_clear), { :project_id => @project, :set_filter => 1 }, :class => 'icon icon-reload' %>
+      <%= link_to l(:search_free_time), 'calendar/search_free_time', :class => 'search_free_time_button'  %>
+      <% if params[:type_period] && params[:type_period] == 'week' %>
+        <br><br><h2><%= week_period(@day) %></h2>
+      <% end %>
+    </p>
+<% end %>
+
+<%= error_messages_for 'query' %>
+<% if @query.valid? %>
+    <%= render :partial => 'common/calendar', :locals => {:calendar => @calendar} %>
+
+    <p class="legend cal">
+      <span class="starting"><%= l(:text_tip_issue_begin_day) %></span>
+      <span class="ending"><%= l(:text_tip_issue_end_day) %></span>
+      <span class="starting ending"><%= l(:text_tip_issue_begin_end_day) %></span>
+    </p>
+<% end %>
+
+<% content_for :sidebar do %>
+    <%= render :partial => 'issues/sidebar' %>
+<% end %>
+
+<% html_title(l(:label_calendar)) -%>

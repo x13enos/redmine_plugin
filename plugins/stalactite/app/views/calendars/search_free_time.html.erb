@@ -1,0 +1,80 @@
+<h2><%= l(:search_free_time) %></h2>
+
+
+<%= form_tag({:controller => 'calendars', :action => 'search_free_time', :project_id => @project},
+             :method => :get, :id => 'query_form') do %>
+  <div class="filter_search_time">
+    <div class="user_search_time">
+      <span class="label_user_search_time"><%= l(:user_list) %></span>
+      <div class="list_user_search_time">
+        <br>
+        <% @users.each do |user| %>
+          <%= user.lastname %>
+          <%= check_box_tag 'users[' + user.id.to_s + ']', '1', (true if params[:users] && params[:users][user.id.to_s] == '1') %>
+          <br>
+        <% end %>
+      </div>
+    </div>
+    <div class="period_between">
+      <span class="label_period_between"><%= l(:period_between) %></span>
+      <p><%= text_field_tag 'search_time_from', (params[:search_time_from] if params[:search_time_from]) %>&nbsp<%= l(:from_period_between) %></p>
+      <p><%= text_field_tag 'search_time_by', (params[:search_time_by] if params[:search_time_by]) %>&nbsp<%= l(:by_period_between) %></p>
+    </div>
+    <div class="period_search">
+      <span class="label_period_search"><%= l(:period_search) %></span>
+      <%= select_tag 'search_time_type', ('<option>' + l(:select_options) + '</option><option value="idle_time" ' + (params[:search_time_type] == 'idle_time' ? 'selected' : '') + '>' + l(:idle_time) + '</option><option value="specified_period" ' + (params[:search_time_type] == 'specified_period' ? 'selected' : '') + '> ' + l(:specified_period) + '</option>').html_safe %>
+      <p class="idle_time_p"><%= text_field_tag 'time_value', (params[:time_value] if params[:time_value]) %> &nbsp <%= l(:time_value) %></p>
+      <p class="specified_period_p"><%= text_field_tag 'search_specified_from', (params[:search_specified_from] if params[:search_specified_from]) %>&nbsp<%= l(:from_period_between) %></p>
+      <p class="specified_period_p"><%= text_field_tag 'search_specified_by', (params[:search_specified_by] if params[:search_specified_by]) %>&nbsp<%= l(:by_period_between) %></p>
+    </div>
+  <%= link_to_function l(:button_apply), '$("#query_form").submit()', :class => 'icon icon-checked apply_search_time' %>
+  </div>
+<% end %>
+
+<div class="free_time_results">
+  <% unless @free_time.blank? %>
+    <div class="user_name_block"><%= l(:user_name) %>:</div>
+    <% @free_time.each do |user, days| %>
+
+        <div class="user_time_results_block">
+            <span><%= link_to ( user.login + image_tag('/plugin_assets/stalactite/images/circle_arrow_down.png', :class => 'icon_arrow_down')).html_safe, '#', :class => "user_time_results_link" %></span>
+            <div class="day_results">
+              <% if @search_type == 'idle_time' %>
+                  <% days.each do |day, periods| %>
+                    <% if periods.length > 0 %>
+                    <span><%= day.strftime('%d %B %Y') %></span>
+                      <div class="period_results">
+                        <% periods.each do |period|  %>
+                          <span>&nbsp &nbsp<%= period %></span>
+                          <br>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  <% end %>
+              <% else %>
+                <% days.each do |day, status| %>
+                    <% if status %>
+                    <span><%= day.strftime('%d %B %Y') %></span>
+                    <br>
+                    <% end %>
+                  <% end %>
+              <% end %>
+            </div>
+        </div>
+    <% end %>
+  <% end %>
+</div>
+
+
+
+
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'stalactite', :plugin => 'stalactite' %>
+    <%= stylesheet_link_tag "jquery-ui-1.9.2.custom.min.css", :plugin => 'stalactite' %>
+    <%= stylesheet_link_tag "jquery-ui-timepicker-addon.css", :plugin => 'stalactite' %>
+    <%= javascript_include_tag "jquery-1.8.3.js", :plugin => 'stalactite' %>
+    <%= javascript_include_tag "jquery-ui-1.9.2.custom.min.js", :plugin => 'stalactite' %>
+    <%= javascript_include_tag "jquery-ui-timepicker-addon.js", :plugin => 'stalactite' %>
+    <%= javascript_include_tag "stalactite.js", :plugin => 'stalactite' %>
+<% end %>
+
