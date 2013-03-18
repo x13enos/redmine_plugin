@@ -47,7 +47,7 @@ end
 #
 #platforms :mri_19, :mingw_19 do
 #  group :mysql do
-#    gem "mysql2", "0.3.11"
+#    gem "mysql2", "~> 0.3.11"
 #  end
 #end
 
@@ -70,6 +70,10 @@ end
 group :development do
   gem "rdoc", ">= 2.4.2"
   gem "yard"
+  gem 'capistrano', '2.12.0'
+  gem 'capistrano-ext', '1.2.1'
+  gem 'capistrano_colors', '0.5.5'
+  gem 'rvm-capistrano', '1.2.1'
 end
 
 group :test do
@@ -80,6 +84,10 @@ group :test do
   platforms << :jruby if defined?(JRUBY_VERSION) && JRUBY_VERSION >= "1.7"
   gem "test-unit", :platforms => platforms
   gem "mocha", "0.12.3"
+end
+
+group :production do
+  gem 'unicorn'
 end
 
 local_gemfile = File.join(File.dirname(__FILE__), "Gemfile.local")
