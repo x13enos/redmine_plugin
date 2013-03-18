@@ -427,5 +427,6 @@ class IssuesController < ApplicationController
       end
     end
     attributes
+
   end
 end

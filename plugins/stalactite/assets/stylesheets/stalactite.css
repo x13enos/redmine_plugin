@@ -1,0 +1,113 @@
+.calendar_day_hour_block{
+  margin-bottom: 20px;
+}
+
+.calendar_day_issue{
+  width: 250px;
+  float: left;
+  position: absolute;
+  overflow: auto;
+}
+
+.day_hour{
+  float:left;
+  margin-top:6px;
+}
+
+.calendar_day_events{
+  float:left;
+  margin-left: 15px;
+  width: 90%;
+}
+
+.search_free_time_button{
+  border: 1px solid;
+  margin-left: 20px;
+  padding: 5px;
+}
+
+.search_free_time_button:hover{
+  text-decoration: none;
+}
+
+.filter_search_time{
+  margin-top: 15px;
+}
+
+.icon_arrow_down{
+  width:15px;
+  position: absolute;
+  margin-left: 5px;
+}
+
+.period_between, .period_search{
+  float:left;
+  margin-left: 20px;
+}
+
+.user_search_time{
+  float:left;
+}
+
+.free_time_results{
+  clear:both;
+  margin-top: 20px;
+  float:left;
+}
+
+.user_name_block{
+  clear:both;
+  float:left;
+  margin-bottom: 5px;
+}
+
+.user_time_results_block{
+  float:left;
+  margin: 0 40px 5px 10px;
+}
+
+.day_results{
+  display: none;
+  margin-top: 5px;
+}
+
+.period_results{
+  margin-bottom: 8px;
+}
+
+.apply_search_time{
+  margin: 25px;
+  float: left;
+}
+
+#search_time_type{
+  float:left;
+  margin: 10px 0;
+}
+
+.idle_time_p, .specified_period_p{
+  display: none;
+}
+
+.description_field{
+  display:none;
+  font-size: 12px;
+  background-color: #ffffdd;
+}
+
+.users_list_in_issue{
+  margin-left: 16px;
+}
+
+.users_list_label{
+  float:left;
+}
+
+.users_list_block{
+  float: left;
+  margin-left: 5px;
+}
+
+.users_list{
+  display: none;
+}

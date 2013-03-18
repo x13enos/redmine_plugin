@@ -4,7 +4,7 @@ gem 'rails', '3.2.11'
 gem "jquery-rails", "~> 2.0.2"
 gem "i18n", "~> 0.6.0"
 gem "coderay", "~> 1.0.6"
-gem "fastercsv", "~> 1.5.0", :platforms => [:mri_18, :mingw_18, :jruby]
+#gem "fastercsv", "~> 1.5.0"
 gem "builder", "3.0.0"
 
 # Optional gem for LDAP authentication
@@ -39,17 +39,17 @@ platforms :mri, :mingw do
   end
 end
 
-platforms :mri_18, :mingw_18 do
-  group :mysql do
-    gem "mysql", "~> 2.8.1"
-  end
-end
-
-platforms :mri_19, :mingw_19 do
-  group :mysql do
-    gem "mysql2", "~> 0.3.11"
-  end
-end
+#platforms :mri_18, :mingw_18 do
+#  group :mysql do
+#    gem "mysql", "~> 2.8.1"
+#  end
+#end
+#
+#platforms :mri_19, :mingw_19 do
+#  group :mysql do
+#    gem "mysql2", "0.3.11"
+#  end
+#end
 
 platforms :jruby do
   gem "jruby-openssl"

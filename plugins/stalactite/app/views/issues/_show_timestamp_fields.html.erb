@@ -1,0 +1,1 @@
+<tr><th><%= l(:field_started_at) %></th><td><%= issue.started_at.strftime('%R') unless issue.started_at.blank? %></td><th><%= l(:field_finished_at) %></th><td><%= issue.finished_at.strftime('%R')  unless issue.finished_at.blank? %></td></tr>

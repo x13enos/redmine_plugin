@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag "jquery-ui-1.9.2.custom.min.css", :plugin => 'stalactite' %>
+<%= stylesheet_link_tag "jquery-ui-timepicker-addon.css", :plugin => 'stalactite' %>
+<%= stylesheet_link_tag "stalactite.css", :plugin => 'stalactite' %>
+<%= javascript_include_tag "jquery-1.8.3.js", :plugin => 'stalactite' %>
+<%= javascript_include_tag "jquery-ui-1.9.2.custom.min.js", :plugin => 'stalactite' %>
+<%= javascript_include_tag "jquery-ui-timepicker-addon.js", :plugin => 'stalactite' %>
+<%= javascript_include_tag "stalactite.js", :plugin => 'stalactite' %>
+<p><%= form.text_field :started_at, :size => 10, :disabled => !@issue.leaf?, :required => @issue.required_attribute?('started_at') %><%= l(:field_hours) %></p>
+<p><%= form.text_field :finished_at, :size => 10, :disabled => !@issue.leaf?, :required => @issue.required_attribute?('finished_at') %><%= l(:field_hours) %></p>
+<% if @users %>
+    <div class="users_list_in_issue">
+      <div class="users_list_label"><strong><%= l(:user_list) %></strong></div>
+      <div class="users_list_block">
+        <div><%= link_to ( l(:expand_list) + image_tag('/plugin_assets/stalactite/images/circle_arrow_down.png', :class => 'icon_arrow_down')).html_safe, '#', :class => "users_list_link" %></div>
+        <div class="users_list">
+          <% @users.each do |user| %>
+            <%= user.lastname %>
+            <%= check_box_tag 'users[' + user.id.to_s + ']', '1', (true if params[:users] && params[:users][user.id.to_s] == '1') %>
+            <br>
+          <% end %>
+        </div>
+      </div>
+    </div>
+<% end %>
