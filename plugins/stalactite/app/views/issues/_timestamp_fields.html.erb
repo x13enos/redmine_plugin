@@ -5,8 +5,8 @@
 <%= javascript_include_tag "jquery-ui-1.9.2.custom.min.js", :plugin => 'stalactite' %>
 <%= javascript_include_tag "jquery-ui-timepicker-addon.js", :plugin => 'stalactite' %>
 <%= javascript_include_tag "stalactite.js", :plugin => 'stalactite' %>
-<p><%= form.text_field :started_at, :size => 10, :disabled => !@issue.leaf?, :required => @issue.required_attribute?('started_at') %><%= l(:field_hours) %></p>
-<p><%= form.text_field :finished_at, :size => 10, :disabled => !@issue.leaf?, :required => @issue.required_attribute?('finished_at') %><%= l(:field_hours) %></p>
+<p><%= form.text_field :started_at, :size => 10, :disabled => !@issue.leaf?, :required => @issue.required_attribute?('started_at'), :class => 'issue_width_110' %><%= l(:field_hours) %></p>
+<p><%= form.text_field :finished_at, :size => 10, :disabled => !@issue.leaf?, :required => @issue.required_attribute?('finished_at'), :class => 'issue_width_110' %><%= l(:field_hours) %></p>
 <% if @users %>
     <div class="users_list_in_issue">
       <div class="users_list_label"><strong><%= l(:user_list) %></strong></div>

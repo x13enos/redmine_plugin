@@ -111,3 +111,7 @@
 .users_list{
   display: none;
 }
+
+.issue_width_110{
+  width: 110px;
+}
