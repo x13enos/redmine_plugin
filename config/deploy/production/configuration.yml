@@ -82,17 +82,7 @@
 default:
   # Outgoing emails configuration (see examples above)
   email_delivery:
-    delivery_method: :smtp
-    smtp_settings:
-      enable_starttls_auto: true
-      address: "smtp.gmail.com"
-      port: 587
-      domain: "smtp.gmail.com"
-      authentication: :plain
-      user_name: "brsystemsinfo@gmail.com"
-      password: "Qwert623"
 
-  tls: true
 
   # Absolute path to the directory where attachments are stored.
   # The default is the 'files' directory in your Redmine instance.
@@ -172,6 +162,16 @@ default:
 # specific configuration options for production environment
 # that overrides the default ones
 production:
+  delivery_method: :smtp
+  smtp_settings:
+    tls: true
+    enable_starttls_auto: true
+    address: "smtp.gmail.com"
+    port: 587
+    domain: "smtp.gmail.com"
+    authentication: :plain
+    user_name: "brsystemsinfo@gmail.com"
+    password: "Qwert623"
 
 # specific configuration options for development environment
 # that overrides the default ones
