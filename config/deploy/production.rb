@@ -39,7 +39,7 @@ namespace :deploy do
     #run "cp #{release_path}/config/deploy/demo/app_config.yml #{release_path}/config/app_config.yml"
     #run "cp #{release_path}/config/deploy/demo/loops.yml #{release_path}/config/loops.yml"
     run "cp #{release_path}/config/deploy/production/.rvmrc #{release_path}/.rvmrc"
-    run "cp #{release_path}/config/deploy/production/configuration.yml #{release_path}/configuration.yml"
+    run "cp #{release_path}/config/deploy/production/configuration.yml #{release_path}/config/configuration.yml"
     #run "cp #{release_path}/config/deploy/production/sunspot.yml #{release_path}/config/sunspot.yml"
     #run "cp #{release_path}/config/deploy/production/schedule.rb #{release_path}/config/schedule.rb"
     #run "cp #{release_path}/config/deploy/production/app_config.yml #{release_path}/config/app_config.yml"
