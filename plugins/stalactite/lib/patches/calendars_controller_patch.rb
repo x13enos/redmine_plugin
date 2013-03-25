@@ -59,6 +59,7 @@ CalendarsController.class_eval do
 
   def search_free_time
     @users = User.order('id ASC')
+    puts @users.inspect
     @date_start = params[:search_time_from]
     @date_end = params[:search_time_by]
     @specified_period_start = params[:search_specified_from]
@@ -113,10 +114,6 @@ CalendarsController.class_eval do
     status = true
     if user_issues[day.day]
       user_issues[day.day].each do |issue|
-        puts issue.started_at
-        puts issue.finished_at
-        puts period_start
-        puts period_end
         status = false if (issue.started_at >= period_start && issue.started_at < period_end) || (issue.finished_at <= period_end && issue.finished_at > period_start)
       end
     end

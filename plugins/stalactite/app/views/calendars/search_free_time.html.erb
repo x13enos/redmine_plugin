@@ -8,24 +8,28 @@
       <span class="label_user_search_time"><%= l(:user_list) %></span>
       <div class="list_user_search_time">
         <br>
-        <% @users.each do |user| %>
-          <%= user.lastname %>
-          <%= check_box_tag 'users[' + user.id.to_s + ']', '1', (true if params[:users] && params[:users][user.id.to_s] == '1') %>
-          <br>
+        <% if @users %>
+            <% @users.each do |user| %>
+              <%= user.firstname unless user.firstname.blank? %>
+              <%= user.lastname unless user.lastname.blank? %>
+              <%= check_box_tag 'users[' + user.id.to_s + ']', '1', (true if params[:users] && params[:users][user.id.to_s] == '1') %>
+              <br>
+            <% end %>
         <% end %>
       </div>
     </div>
     <div class="period_between">
       <span class="label_period_between"><%= l(:period_between) %></span>
-      <p><%= text_field_tag 'search_time_from', (params[:search_time_from] if params[:search_time_from]) %>&nbsp<%= l(:from_period_between) %></p>
-      <p><%= text_field_tag 'search_time_by', (params[:search_time_by] if params[:search_time_by]) %>&nbsp<%= l(:by_period_between) %></p>
+      <p><%= l(:from_period_between) %>&nbsp &nbsp<%= text_field_tag 'search_time_from', (params[:search_time_from] if params[:search_time_from]) %></p>
+      <p><%= l(:by_period_between) %>&nbsp<%= text_field_tag 'search_time_by', (params[:search_time_by] if params[:search_time_by]) %></p>
     </div>
     <div class="period_search">
       <span class="label_period_search"><%= l(:period_search) %></span>
       <%= select_tag 'search_time_type', ('<option>' + l(:select_options) + '</option><option value="idle_time" ' + (params[:search_time_type] == 'idle_time' ? 'selected' : '') + '>' + l(:idle_time) + '</option><option value="specified_period" ' + (params[:search_time_type] == 'specified_period' ? 'selected' : '') + '> ' + l(:specified_period) + '</option>').html_safe %>
-      <p class="idle_time_p"><%= text_field_tag 'time_value', (params[:time_value] if params[:time_value]) %> &nbsp <%= l(:time_value) %></p>
-      <p class="specified_period_p"><%= text_field_tag 'search_specified_from', (params[:search_specified_from] if params[:search_specified_from]) %>&nbsp<%= l(:from_period_between) %></p>
-      <p class="specified_period_p"><%= text_field_tag 'search_specified_by', (params[:search_specified_by] if params[:search_specified_by]) %>&nbsp<%= l(:by_period_between) %></p>
+      <p class="idle_time_p"><%= l(:time_value) %> &nbsp <%= text_field_tag 'time_value', (params[:time_value] if params[:time_value]) %></p>
+
+      <p class="specified_period_p"><%= l(:from_period_between) %>&nbsp<%= text_field_tag 'search_specified_from', (params[:search_specified_from] if params[:search_specified_from]) %></p>
+      <p class="specified_period_p"><%= l(:by_period_between) %>&nbsp<%= text_field_tag 'search_specified_by', (params[:search_specified_by] if params[:search_specified_by]) %></p>
     </div>
   <%= link_to_function l(:button_apply), '$("#query_form").submit()', :class => 'icon icon-checked apply_search_time' %>
   </div>
@@ -37,7 +41,8 @@
     <% @free_time.each do |user, days| %>
 
         <div class="user_time_results_block">
-            <span><%= link_to ( user.login + image_tag('/plugin_assets/stalactite/images/circle_arrow_down.png', :class => 'icon_arrow_down')).html_safe, '#', :class => "user_time_results_link" %></span>
+            <% user_name = user.lastname && user.firstname ? (user.lastname + ' ' + user.firstname) : user.login  %>
+            <span><%=link_to ('<span class="user_name_in_search_time_block">' + user_name + '</span>' + image_tag('/plugin_assets/stalactite/images/circle_arrow_down.png', :class => 'icon_arrow_down')).html_safe, '#', :class => "user_time_results_link" %></span>
             <div class="day_results">
               <% if @search_type == 'idle_time' %>
                   <% days.each do |day, periods| %>

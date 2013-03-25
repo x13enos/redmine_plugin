@@ -43,6 +43,8 @@
 .period_between, .period_search{
   float:left;
   margin-left: 20px;
+  padding: 10px;
+  border: 1px solid;
 }
 
 .user_search_time{
@@ -87,6 +89,7 @@
 
 .idle_time_p, .specified_period_p{
   display: none;
+  clear:both;
 }
 
 .description_field{
@@ -117,4 +120,18 @@
 
 .issue_width_110{
   width: 110px;
+}
+
+.list_user_search_time{
+  max-height: 200px;
+  margin: 10px 0;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  padding-bottom: 15px;
+  overflow: auto;
+}
+
+.user_name_in_search_time_block{
+  display:block;
+  float:left;
 }
