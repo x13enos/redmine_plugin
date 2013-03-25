@@ -110,6 +110,9 @@
 
 .users_list{
   display: none;
+  max-height: 150px;
+  overflow: auto;
+  margin: 10px 0;
 }
 
 .issue_width_110{
