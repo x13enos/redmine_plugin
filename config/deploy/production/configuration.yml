@@ -92,6 +92,8 @@ default:
       user_name: "brsystemsinfo@gmail.com"
       password: "Qwert623"
 
+  tls: true
+
   # Absolute path to the directory where attachments are stored.
   # The default is the 'files' directory in your Redmine instance.
   # Your Redmine instance needs to have write permission on this
