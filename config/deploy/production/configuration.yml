@@ -168,7 +168,7 @@ production:
        enable_starttls_auto: true
        address: "smtp.gmail.com"
        port: 587
-       domain: "smtp.gmail.com"
+       domain: "http://151.236.217.245/"
        authentication: :plain
        user_name: "brsystemsinfo@gmail.com"
        password: "Qwert623"
