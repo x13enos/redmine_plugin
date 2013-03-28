@@ -10,9 +10,9 @@
         <br>
         <% if @users %>
             <% @users.each do |user| %>
-              <%= user.firstname unless user.firstname.blank? %>
+                <%= check_box_tag 'users[' + user.id.to_s + ']', '1', (true if params[:users] && params[:users][user.id.to_s] == '1') %>
+                <%= user.firstname unless user.firstname.blank? %>
               <%= user.lastname unless user.lastname.blank? %>
-              <%= check_box_tag 'users[' + user.id.to_s + ']', '1', (true if params[:users] && params[:users][user.id.to_s] == '1') %>
               <br>
             <% end %>
         <% end %>
