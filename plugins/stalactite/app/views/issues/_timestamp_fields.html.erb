@@ -15,8 +15,9 @@
         <div><%= link_to ( l(:expand_list) + image_tag('/plugin_assets/stalactite/images/circle_arrow_down.png', :class => 'icon_arrow_down')).html_safe, '#', :class => "users_list_link" %></div>
         <div class="users_list">
           <% @users.each do |user| %>
-            <%= user.lastname %>
             <%= check_box_tag 'users[' + user.id.to_s + ']', '1', (true if params[:users] && params[:users][user.id.to_s] == '1') %>
+            <%= user.firstname unless user.firstname.blank? %>
+            <%= user.lastname unless user.lastname.blank? %>
             <br>
           <% end %>
         </div>
