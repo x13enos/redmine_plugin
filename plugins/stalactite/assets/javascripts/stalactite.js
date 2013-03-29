@@ -3,12 +3,12 @@ $(function(){
     $.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
 
     $('#issue_started_at, #issue_finished_at').datetimepicker({
-    dateFormat: 'dd/mm/yy',
+    dateFormat: 'yy-mm-dd',
     language: 'ru'
   });
 
   $('#search_time_from, #search_time_by, .date_cf, #issue_due_date, #issue_start_date').datepicker({
-    dateFormat: 'dd/mm/yy',
+    dateFormat: 'yy-mm-dd',
     language: 'ru'
   })
     $.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
