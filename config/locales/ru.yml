@@ -287,7 +287,7 @@ ru:
 
   error_can_not_remove_role: Эта роль используется и не может быть удалена.
   error_can_not_delete_custom_field: Невозможно удалить настраиваемое поле
-  error_can_not_delete_tracker: Этот трекер содержит задачи и не может быть удален.
+  error_can_not_delete_tracker: Эта деятельность содержит задачи и не может быть удален.
   error_can_t_load_default_data: "Конфигурация по умолчанию не была загружена: %{value}"
   error_issue_not_found_in_project: Задача не была найдена или не прикреплена к этому проекту
   error_scm_annotate: "Данные отсутствуют или не могут быть подписаны."
@@ -379,7 +379,7 @@ ru:
   field_time_entries: Затраченное время
   field_time_zone: Часовой пояс
   field_title: Заголовок
-  field_tracker: Трекер
+  field_tracker: Деятельность
   field_type: Тип
   field_updated_on: Обновлено
   field_url: URL
@@ -697,9 +697,9 @@ ru:
   label_today: сегодня
   label_topic_plural: Темы
   label_total: Всего
-  label_tracker: Трекер
-  label_tracker_new: Новый трекер
-  label_tracker_plural: Трекеры
+  label_tracker: Деятельность
+  label_tracker_new: Новая Деятельность
+  label_tracker_plural: Деятельности
   label_updated_time: "Обновлено %{value} назад"
   label_updated_time_by: "Обновлено %{author} %{age} назад"
   label_used_by: Используется
@@ -933,7 +933,7 @@ ru:
   text_length_between: "Длина между %{min} и %{max} символов."
   text_load_default_configuration: Загрузить конфигурацию по умолчанию
   text_min_max_length_info: 0 означает отсутствие ограничений
-  text_no_configuration_data: "Роли, трекеры, статусы задач и оперативный план не были сконфигурированы.\nНастоятельно рекомендуется загрузить конфигурацию по-умолчанию. Вы сможете её изменить потом."
+  text_no_configuration_data: "Роли, деятельности, статусы задач и оперативный план не были сконфигурированы.\nНастоятельно рекомендуется загрузить конфигурацию по-умолчанию. Вы сможете её изменить потом."
   text_plugin_assets_writable: Каталог модулей доступен для записи
   text_project_destroy_confirmation: Вы настаиваете на удалении данного проекта и всей относящейся к нему информации?
   text_reassign_time_entries: 'Перенести зарегистрированное время на следующую задачу:'
@@ -947,12 +947,12 @@ ru:
   text_tip_issue_begin_day: дата начала задачи
   text_tip_issue_begin_end_day: начало задачи и окончание её в этот же день
   text_tip_issue_end_day: дата завершения задачи
-  text_tracker_no_workflow: Для этого трекера последовательность действий не определена
+  text_tracker_no_workflow: Для этой деятельности последовательность действий не определена
   text_unallowed_characters: Запрещенные символы
   text_user_mail_option: "Для невыбранных проектов, Вы будете получать уведомления только о том, что просматриваете или в чем участвуете (например, задачи, автором которых Вы являетесь, или которые Вам назначены)."
   text_user_wrote: "%{value} писал(а):"
   text_wiki_destroy_confirmation: Вы уверены, что хотите удалить данную Wiki и все её содержимое?
-  text_workflow_edit: Выберите роль и трекер для редактирования последовательности состояний
+  text_workflow_edit: Выберите роль и деятельность для редактирования последовательности состояний
 
   warning_attachments_not_saved: "%{count} файл(ов) невозможно сохранить."
   text_wiki_page_destroy_question: Эта страница имеет %{descendants} дочерних страниц и их потомков. Что вы хотите предпринять?
@@ -972,7 +972,7 @@ ru:
   label_view_all_revisions: Показать все ревизии
   label_tag: Метка
   label_branch: Ветвь
-  error_no_tracker_in_project: С этим проектом не ассоциирован ни один трекер. Проверьте настройки проекта.
+  error_no_tracker_in_project: С этим проектом не ассоциирована ни одна деятельность. Проверьте настройки проекта.
   error_no_default_issue_status: Не определен статус задач по умолчанию. Проверьте настройки (см. "Администрирование -> Статусы задач").
   label_group_plural: Группы
   label_group: Группа
@@ -1003,19 +1003,19 @@ ru:
   setting_issue_done_ratio:  Рассчитывать готовность задачи с помощью поля
   setting_issue_done_ratio_issue_status: Статус задачи
   error_issue_done_ratios_not_updated: Параметр готовность задач не обновлён
-  error_workflow_copy_target: Выберите целевые трекеры и роли
+  error_workflow_copy_target: Выберите целевые деятельности и роли
   setting_issue_done_ratio_issue_field: Готовность задачи
   label_copy_same_as_target: То же, что и у цели
   label_copy_target: Цель
   notice_issue_done_ratios_updated: Параметр &laquo;готовность&raquo; обновлён.
-  error_workflow_copy_source: Выберите исходный трекер или роль
+  error_workflow_copy_source: Выберите исходную деятельность или роль
   label_update_issue_done_ratios: Обновить готовность задач
   setting_start_of_week: День начала недели
   label_api_access_key: Ключ доступа к API
   text_line_separated: Разрешено несколько значений (по одному значению в строку).
   label_revision_id: Ревизия %{value}
   permission_view_issues: Просмотр задач
-  label_display_used_statuses_only: Отображать только те статусы, которые используются в этом трекере
+  label_display_used_statuses_only: Отображать только те статусы, которые используются в этой деятельности
   label_api_access_key_created_on: Ключ доступ к API был создан %{value} назад
   label_feeds_access_key: Ключ доступа к RSS
   notice_api_access_key_reseted: Ваш ключ доступа к API был сброшен.
